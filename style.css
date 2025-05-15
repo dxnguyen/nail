@@ -28,7 +28,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Playfair Display', serif;;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
 }
 
 body {
@@ -42,7 +43,7 @@ nav {
     align-items: center;
     padding: 15px 50px;
     background: white;
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     z-index: 1000;
     padding-left: 160px;
@@ -323,16 +324,19 @@ nav {
 .welcome-box h2,
 .welcome-box p,
 .about-content h2.title-aboutus,
-.text-about-content {
+.text-about-content,
+.relax-zone h2,
+.relax-zone h4,
+.relax-zone p {
     position: relative;
     right: -50%;
     opacity: 0;
     animation: slideInRight 2s ease-out forwards;
 }
 
-/*.welcome-box p {
+.relax-zone p {
     animation-delay: 0.5s;
-}*/
+}
 
 /* Keyframes hiệu ứng chạy từ phải qua */
 @keyframes slideInRight {
@@ -505,6 +509,13 @@ nav {
     line-height: 1.6;
 }
 
+.discovery {position: relative; overflow: hidden; background-color: #E6C2BF; padding: 60px;}
+.box-discover { width:100%; margin: 0 auto; background-color: #ffffff; display: flex; align-items: center;}
+.slogan { position: relative; overflow: hidden; max-width: 490px; margin: 0 auto;}
+.slogan h2 { font-size: 40px; padding-bottom: 30px; }
+.box-discover-img { padding: 0 !important; margin: 0 !important;}
+.box-discover-img img { max-width: 100%;}
+
 @media (max-width: 768px) {
     .feature {
         flex-direction: column;
@@ -526,12 +537,14 @@ nav {
     overflow: hidden;
 }
 
+
 .relax-zone h2 {
     font-size: 50px;
     margin-bottom: 20px;
     font-weight: normal;
     color: #000000;
 }
+
 .relax-zone h4{font-size: 25px; color: #E6C2BF; }
 
 .relax-zone p {
@@ -587,7 +600,7 @@ nav {
 }
 
 .gallery {
-    padding: 80px 5%;
+    padding: 20px 5%;
     text-align: center;
     background: #fff;
 }
@@ -620,12 +633,12 @@ nav {
 }
 
 .gallery-item {
-    flex: 0 0 calc(33.333% - 14px);
+    flex: 0 0 calc(20% - 14px);
     min-width: 300px;
     height: 300px;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /*border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);*/
 }
 
 .gallery-item img {
@@ -730,13 +743,16 @@ nav {
 .contact {
     padding: 50px 15%;
     text-align: center;
-    background: #f9f1f1;
+    background: #ffffff;
 }
 
-.contact h2 {
-    font-size: 32px;
+.contact h2.titleContact {
+    font-size: 40px;
     margin-bottom: 30px;
-    font-weight: normal;
+    font-weight: bold;
+    color:#E6C2BF;
+    text-shadow: rgba(255, 255, 255, 0.6) 1px 1px 1px, rgba(0, 0, 0, 0.6) -1px -1px 1px;
+
 }
 
 .contact-info {
