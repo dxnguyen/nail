@@ -425,7 +425,7 @@ nav {
     font-weight: normal;
     color: #ffffff;
 }
-.text-about-content { color: #ffffff; position: relative; overflow: hidden; width: 510px; text-align: center;margin: 0 auto;}
+.about-content .text-about-content { color: #ffffff; position: relative; overflow: hidden; width: 510px; text-align: center;margin: 0 auto;}
 .about-content p {
     color: #ffffff;
     line-height: 1.8;
@@ -510,11 +510,28 @@ nav {
 }
 
 .discovery {position: relative; overflow: hidden; background-color: #E6C2BF; padding: 60px;}
-.box-discover { width:100%; margin: 0 auto; background-color: #ffffff; display: flex; align-items: center;}
+.discovery .box-discover { width:100%; margin: 0 auto; background-color: #ffffff; display: flex; align-items: center;}
 .slogan { position: relative; overflow: hidden; max-width: 490px; margin: 0 auto;}
 .slogan h2 { font-size: 40px; padding-bottom: 30px; }
-.box-discover-img { padding: 0 !important; margin: 0 !important;}
-.box-discover-img img { max-width: 100%;}
+.discovery .box-discover-img { padding: 0 !important; margin: 0 !important;}
+.discovery .box-discover-img img { max-width: 100%;}
+
+/*About*/
+.boxAbout {
+    text-align: center;
+    padding: 100px 0 30px 0;
+    color: #000000;
+}
+
+.boxAbout .text-about-content { color: #000000; position: relative; overflow: hidden; max-width: 720px !important; text-align: center;margin: 10px auto; line-height: 1.8;}
+.boxAbout h2 { font-size: 65px; text-align: center; padding: 30px 0;}
+
+.about3col {position: relative; overflow: hidden; background-color: #E6C2BF; padding: 60px;}
+.about3col .box-discover { width:100%; max-width: 1000px; margin: 0 auto; background-color: #ffffff; display: flex; align-items: center;}
+
+.boxTextAbout{position: relative; overflow: hidden; text-align: center; margin: 10px;}
+.boxTextAbout h3{font-size: 20px; font-weight: bold; color: #000000;}
+.boxTextAbout  .textContent p{ font-size: 14px !important; color: #000000; line-height: 1.8;}
 
 @media (max-width: 768px) {
     .feature {
@@ -629,7 +646,7 @@ nav {
 .gallery-grid {
     display: flex;
     transition: transform 0.5s ease;
-    gap: 20px;
+    gap: 10px;
 }
 
 .gallery-item {
@@ -649,7 +666,16 @@ nav {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1);
+    /*transform: scale(1.1);*/
+    /*opacity: 0.5;*/
+}
+
+.gallery-item img {
+    transition: 0.3s ease;
+}
+
+.gallery-item img:hover {
+    filter: brightness(70%);
 }
 
 .gallery-nav {
@@ -741,7 +767,7 @@ nav {
 }
 
 .contact {
-    padding: 50px 15%;
+    padding: 30px 15%;
     text-align: center;
     background: #ffffff;
 }
@@ -756,19 +782,28 @@ nav {
 }
 
 .contact-info {
-    color: #666;
+    position: relative;
+    width: 450px;
+    margin: 0 auto;
+    color: #000000;
     line-height: 1.8;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 130px;
 }
 
-.social-links {
-    margin-top: 20px;
-}
+.contact-info p{ margin-bottom: 0;}
+.workingDay{ width: 100px; text-align: left; padding-left: 50px;}
+.workingTime{ padding-left: 40px; text-align: left; font-weight: normal;}
 
+.social-links{position: relative;margin-top: 10px;  padding-left: 90px;}
 .social-links a {
-    color: #d4a5a5;
+    color: #000000;
     margin: 0 10px;
     font-size: 20px;
 }
+.social-links a i { font-size: 20px;}
 
 @keyframes fadeInUp {
     from {
@@ -797,4 +832,17 @@ nav {
     .hero, .about, .relax-zone, .contact {
         padding: 60px 5%;
     }
+}
+
+
+@media (max-width: 600px) {
+    .contact-info {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .workingDay{text-align: center; padding-left: 0px;}
+    .workingTime{ padding-left: 0px; text-align: center; font-weight: normal;}
+
+    .social-links{position: relative;margin-top: 10px;  padding-left: 0px;}
 }
