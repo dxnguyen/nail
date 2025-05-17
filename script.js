@@ -17,38 +17,73 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Services Slider
-    const slider = document.querySelector('.services-grid');
+    const slider = document.querySelector('.slider-track');
+    const wrapper = document.getElementById('slider');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    let slidePosition = 0;
-    
-    function updateSlider() {
-        const itemWidth = document.querySelector('.service').offsetWidth + 20; // Width + gap
-        const containerWidth = slider.parentElement.offsetWidth;
-        const maxSlides = Math.max(0, slider.children.length - Math.floor(containerWidth / itemWidth));
-        
-        prevBtn.style.display = slidePosition <= 0 ? 'none' : 'flex';
-        nextBtn.style.display = slidePosition >= maxSlides ? 'none' : 'flex';
-        
-        slider.style.transform = `translateX(-${slidePosition * itemWidth}px)`;
+    let slideIndex = 0;
+    let isHovered = false;
+
+    function getItemWidth() {
+        return slider.querySelector('.slider-item').offsetWidth;
     }
 
-    if (slider && prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-            if (slidePosition > 0) {
-                slidePosition--;
-                updateSlider();
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            slidePosition++;
-            updateSlider();
-        });
-
-        window.addEventListener('resize', updateSlider);
-        updateSlider();
+    function updateSlide() {
+        const offset = getItemWidth() * slideIndex;
+        slider.style.transform = `translateX(-${offset}px)`;
     }
+
+    function slideNext() {
+        const maxIndex = slider.children.length - Math.floor(wrapper.offsetWidth / getItemWidth());
+        slideIndex = slideIndex < maxIndex ? slideIndex + 1 : 0;
+        updateSlide();
+    }
+
+    function slidePrev() {
+        const maxIndex = slider.children.length - Math.floor(wrapper.offsetWidth / getItemWidth());
+        slideIndex = slideIndex > 0 ? slideIndex - 1 : maxIndex;
+        updateSlide();
+    }
+
+    nextBtn.addEventListener('click', slideNext);
+    prevBtn.addEventListener('click', slidePrev);
+
+    let autoSlide = setInterval(() => {
+        if (!isHovered) slideNext();
+    }, 3000);
+
+    wrapper.addEventListener('mouseenter', () => isHovered = true);
+    wrapper.addEventListener('mouseleave', () => isHovered = false);
+
+    // Kéo chuột để trượt
+    let isDown = false;
+    let startX;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX;
+        clearInterval(autoSlide);
+    });
+
+    slider.addEventListener('mouseup', (e) => {
+        if (!isDown) return;
+        const diff = e.pageX - startX;
+        if (diff > 50) slidePrev();
+        else if (diff < -50) slideNext();
+        isDown = false;
+        autoSlide = setInterval(() => {
+            if (!isHovered) slideNext();
+        }, 3000);
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    window.addEventListener('resize', updateSlide);
+
+
+
 
     // Intersection Observer for lazy loading animations
     const observer = new IntersectionObserver((entries) => {
@@ -64,76 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(element);
     });
 
-    // Gallery Slider
-    const gallerySlider = document.querySelector('.gallery-grid');
-    const prevGallery = document.querySelector('.prev-gallery');
-    const nextGallery = document.querySelector('.next-gallery');
-    let galleryPosition = 0;
-    
-    function updateGallerySlider() {
-        const itemWidth = document.querySelector('.gallery-item').offsetWidth + 20;
-        const containerWidth = gallerySlider.parentElement.offsetWidth;
-        const maxSlides = Math.max(0, gallerySlider.children.length - Math.floor(containerWidth / itemWidth));
-        
-        prevGallery.style.display = galleryPosition <= 0 ? 'none' : 'flex';
-        nextGallery.style.display = galleryPosition >= maxSlides ? 'none' : 'flex';
-        
-        gallerySlider.style.transform = `translateX(-${galleryPosition * itemWidth}px)`;
-    }
 
-    if (prevGallery && nextGallery) {
-        prevGallery.addEventListener('click', () => {
-            if (galleryPosition > 0) {
-                galleryPosition--;
-                updateGallerySlider();
-            }
-        });
 
-        nextGallery.addEventListener('click', () => {
-            galleryPosition++;
-            updateGallerySlider();
-        });
-
-        window.addEventListener('resize', updateGallerySlider);
-        updateGallerySlider();
-    }
-
-    // Gallery Modal
-    const modal = document.querySelector('.gallery-modal');
-    const modalImg = document.querySelector('#modal-img');
-    const closeModal = document.querySelector('.close-modal');
-    const prevModal = document.querySelector('.prev-modal');
-    const nextModal = document.querySelector('.next-modal');
-    const galleryItems = document.querySelectorAll('.gallery-item img');
-    let currentImageIndex = 0;
-
-    galleryItems.forEach((img, index) => {
-        img.addEventListener('click', () => {
-            modal.style.display = 'block';
-            modalImg.src = img.src;
-            currentImageIndex = index;
-        });
-    });
-
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    prevModal.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
-        modalImg.src = galleryItems[currentImageIndex].src;
-    });
-
-    nextModal.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
-        modalImg.src = galleryItems[currentImageIndex].src;
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
 });
 
 
@@ -181,3 +148,77 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+
+//gallery slider
+const customTrack = document.getElementById('customGalleryTrack');
+const customPrevBtn = document.querySelector('.custom-prev-btn');
+const customNextBtn = document.querySelector('.custom-next-btn');
+const customImages = document.querySelectorAll('.custom-gallery-item img');
+
+let customSlidePos = 0;
+const customMaxSlides = customImages.length - 5;
+
+customPrevBtn.onclick = () => {
+    if (customSlidePos > 0) {
+        customSlidePos--;
+        updateCustomGallery();
+    }
+};
+
+customNextBtn.onclick = () => {
+    if (customSlidePos < customMaxSlides) {
+        customSlidePos++;
+        updateCustomGallery();
+    }
+};
+
+function updateCustomGallery() {
+    const itemWidth = customImages[0].parentElement.offsetWidth;
+    customTrack.style.transform = `translateX(-${customSlidePos * itemWidth}px)`;
+}
+
+// Lightbox
+const customLightbox = document.getElementById('customLightbox');
+const customLightboxImg = document.getElementById('customLightboxImg');
+const customCloseBtn = document.getElementById('customClosePopup');
+const customPrevPopup = document.getElementById('customPrevPopup');
+const customNextPopup = document.getElementById('customNextPopup');
+const customFullscreenBtn = document.getElementById('customFullscreenBtn');
+let customCurrentIndex = 0;
+
+customImages.forEach(img => {
+    img.onclick = () => {
+        customCurrentIndex = parseInt(img.dataset.index);
+        showCustomLightbox(customCurrentIndex);
+    };
+});
+
+function showCustomLightbox(index) {
+    customLightbox.style.display = 'flex';
+    customLightboxImg.src = customImages[index].src.replace("300x200", "900x600");
+}
+
+customCloseBtn.onclick = () => {
+    customLightbox.style.display = 'none';
+};
+
+customPrevPopup.onclick = () => {
+    customCurrentIndex = (customCurrentIndex - 1 + customImages.length) % customImages.length;
+    showCustomLightbox(customCurrentIndex);
+};
+
+customNextPopup.onclick = () => {
+    customCurrentIndex = (customCurrentIndex + 1) % customImages.length;
+    showCustomLightbox(customCurrentIndex);
+};
+
+customFullscreenBtn.onclick = () => {
+    if (customLightboxImg.requestFullscreen) {
+        customLightboxImg.requestFullscreen();
+    }
+};
+
+/////////
+

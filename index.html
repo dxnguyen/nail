@@ -21,7 +21,6 @@
     <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -117,47 +116,43 @@
     <h2 data-aos="slide-left" data-aos-duration="1500">Relax Zone</h2>
     <h4 data-aos="slide-left" data-aos-duration="1500">Our Services</h4>
     <p data-aos="slide-left" data-aos-duration="1500" data-aos-delay="300">Your destination for exquisite, personalized nail artistry in a sophisticated and relaxing atmosphere.</p>
-    <div class="services-container">
-        <button class="slider-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
-        <div class="services-grid">
-            <div class="service">
-                <a href="#" title=""> <img src="https://img.icons8.com/cotton/64/000000/nail-polish.png" loading="lazy"
-                                           alt="Gel"></a> <br/>
-                <span>GEL</span>
+
+    <div class="slider-wrapper" id="slider">
+        <button class="nav-btn prev-btn">&#10094;</button>
+        <div class="slider-track">
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 1">
+                <div class="slider-caption">GELX</div>
             </div>
-            <div class="service">
-                <a href="#" title=""><img src="https://img.icons8.com/cotton/64/000000/nail-file.png" loading="lazy"
-                                          alt="GEL X"></a> <br/>
-                <span>GEL X</span>
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 2">
+                <div class="slider-caption">Ảnh 2</div>
             </div>
-            <div class="service">
-                <a href="#" title=""><img src="https://img.icons8.com/cotton/64/000000/nail-polish-1.png" loading="lazy"
-                                          alt="DIPPING POWDER"></a> <br/>
-                <span>DIPPING POWDER</span>
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 3">
+                <div class="slider-caption">Ảnh 3</div>
             </div>
-            <div class="service">
-                <a href="#" title=""><img src="https://img.icons8.com/cotton/64/000000/manicure.png" loading="lazy"
-                                          alt="SHELLAC"> </a><br/>
-                <span>SHELLAC</span>
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 4">
+                <div class="slider-caption">Ảnh 4</div>
             </div>
-            <div class="service">
-                <a href="#" title=""><img src="https://img.icons8.com/cotton/64/000000/spa-care.png" loading="lazy"
-                                          alt="CARE"></a> <br/>
-                <span>CARE</span>
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 5">
+                <div class="slider-caption">Ảnh 5</div>
             </div>
-            <div class="service">
-                <a href="#" title=""><img src="https://img.icons8.com/cotton/64/000000/spa-care.png" loading="lazy"
-                                          alt="CARE"></a> <br/>
-                <span>CARE</span>
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 4">
+                <div class="slider-caption">Ảnh 4</div>
             </div>
-            <div class="service">
-                <a href="#" title=""><img src="https://img.icons8.com/cotton/64/000000/spa-care.png" loading="lazy"
-                                          alt="CARE"></a> <br/>
-                <span>CARE</span>
+            <div class="slider-item">
+                <img src="imgs/GELX.avif" alt="Ảnh 5">
+                <div class="slider-caption">Ảnh 5</div>
             </div>
         </div>
-        <button class="slider-nav next-btn"><i class="fas fa-chevron-right"></i></button>
+        <button class="nav-btn next-btn">&#10095;</button>
     </div>
+
+
 </section>
 <section class="discovery">
         <div class="row box-discover">
@@ -178,48 +173,37 @@
             </div>
         </div>
 </section>
+
 <section class="gallery">
     <!--<h2>Our Gallery</h2>
     <p>Explore our stunning nail art and services</p>-->
-    <div class="gallery-container">
-        <button class="gallery-nav prev-gallery"><i class="fas fa-chevron-left"></i></button>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-1.avif" alt="Nail Art 1">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-2.avif" alt="Nail Art 2">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-3.avif" alt="Nail Art 3">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-1.jfif" alt="Nail Art 4">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-2.jfif" alt="Nail Art 5">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-1.jfif" alt="Nail Art 3">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-1.jfif" alt="Nail Art 4">
-            </div>
-            <div class="gallery-item">
-                <img src="imgs/photo-gallery-2.jfif" alt="Nail Art 5">
-            </div>
+    <div class="custom-gallery-container">
+        <button class="custom-nav-btn custom-prev-btn">&#10094;</button>
+        <div class="custom-gallery-track" id="customGalleryTrack">
+            <div class="custom-gallery-item"><img src="imgs/gallery-1.png" data-index="0"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-2.png" data-index="1"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-1.png" data-index="2"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-2.png" data-index="3"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-1.png" data-index="4"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-2.png" data-index="5"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-1.png" data-index="6"></div>
+            <div class="custom-gallery-item"><img src="imgs/gallery-2.png" data-index="7"></div>
         </div>
-        <button class="gallery-nav next-gallery"><i class="fas fa-chevron-right"></i></button>
+        <button class="custom-nav-btn custom-next-btn">&#10095;</button>
     </div>
-</section>
 
-<!-- Gallery Popup Modal -->
-<div class="gallery-modal">
-    <span class="close-modal">&times;</span>
-    <button class="modal-nav prev-modal"><i class="fas fa-chevron-left"></i></button>
-    <img class="modal-content" id="modal-img">
-    <button class="modal-nav next-modal"><i class="fas fa-chevron-right"></i></button>
-</div>
+    <!-- Lightbox Popup -->
+    <div class="custom-lightbox" id="customLightbox">
+        <img id="customLightboxImg" src="">
+        <div class="custom-lightbox-controls">
+            <button id="customPrevPopup">&#10094;</button>
+            <button id="customNextPopup">&#10095;</button>
+            <button id="customFullscreenBtn">🔍</button>
+            <button id="customClosePopup">✖</button>
+        </div>
+    </div>
+
+</section>
 
 <section class="contact">
     <h2 class="titleContact" data-aos="slide-left" data-aos-duration="1500">CONTACT US</h2>
